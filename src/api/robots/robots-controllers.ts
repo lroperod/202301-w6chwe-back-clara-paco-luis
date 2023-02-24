@@ -1,5 +1,5 @@
 import { RequestHandler } from 'express';
-import { RobotModel } from './robot-schema';
+import { RobotModel } from './robot-schema.js';
 
 export const getRobotsControllers: RequestHandler = async (_req, res) => {
   try {
