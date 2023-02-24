@@ -2,9 +2,11 @@
   "name": "challenge-weekend-robot",
   "version": "1.0.0",
   "description": "Robots Tendrás que crear un frontend en React (con Redux) que permita al usuario gestionar un listado con sus robots. El usuario debe poder listar, crear, modificar y borrar robots. Cada robot debe mostrar un nombre, una imagen (URL de internet) y unas características:",
-  "main": "index.js",
+  "main": "dist/server.js",
   "type": "module",
   "scripts": {
+    "start": "node dist/server.js",
+    "build": "tsc",
     "test": "jest",
     "prepare": "husky install",
     "ci:test": "npm test -- --coverage --watchAll=false"
