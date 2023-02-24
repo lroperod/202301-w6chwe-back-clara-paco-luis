@@ -2,7 +2,6 @@ import express from 'express';
 import apiRouter from './api/api-router.js';
 
 const app = express();
-app.disable('x-powered-by');
 
 app.get('/', (req, res) => {
   res.json('Server is up!!');
