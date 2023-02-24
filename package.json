@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Robots Tendrás que crear un frontend en React (con Redux) que permita al usuario gestionar un listado con sus robots. El usuario debe poder listar, crear, modificar y borrar robots. Cada robot debe mostrar un nombre, una imagen (URL de internet) y unas características:",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "jest",
     "prepare": "husky install",
