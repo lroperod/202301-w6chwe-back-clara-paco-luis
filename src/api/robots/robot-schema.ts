@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 
 const robotSchema = new Schema({
-  _id: String,
+  id: String,
   name: String,
   img: String,
   characteristics: {
