@@ -2,6 +2,6 @@
 export default {
   preset: 'ts-jest',
   testEnvironment: 'node',
-  testMatch: ['**/src/**/*.test.ts'],
   resolver: 'jest-ts-webcompat-resolver',
+  testMatch: ['**/src/**/*.test.ts'],
 };
