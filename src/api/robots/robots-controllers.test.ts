@@ -14,6 +14,7 @@ describe('Given a getRobotsControllers function from robots-controller', () => {
 
   const robots = [
     {
+      id: 'robotId',
       _id: 'robotId',
       name: 'Mazinger Z',
       img: 'urlRobot',
@@ -47,7 +48,7 @@ describe('Given a function to create robots', () => {
   } as Partial<Response>;
 
   const robot = {
-    _id: 'robotId',
+    id: '0',
     name: 'Mazinger Z',
     img: 'urlRobot',
     characteristics: {
@@ -55,7 +56,6 @@ describe('Given a function to create robots', () => {
       resistence: 6,
       creation: '1972',
     },
-    id: '0',
   };
   test('When the creation is successful, then the function should return it', async () => {
     RobotModel.create = jest.fn().mockResolvedValue(robot);
@@ -64,7 +64,6 @@ describe('Given a function to create robots', () => {
       response as Response,
       jest.fn(),
     );
-
     expect(response.json).toHaveBeenCalled();
   });
 
