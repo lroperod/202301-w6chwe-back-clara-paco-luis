@@ -1,7 +1,11 @@
 import express from 'express';
-import { getRobotsControllers } from './robots-controllers.js';
+import {
+  createRobotController,
+  getRobotsControllers,
+} from './robots-controllers.js';
+
 const router = express.Router();
 
-router.route('/').get(getRobotsControllers);
+router.route('/').get(getRobotsControllers).post(createRobotController);
 
 export default router;
