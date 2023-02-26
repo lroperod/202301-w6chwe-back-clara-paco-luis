@@ -3,13 +3,16 @@ import {
   createRobotController,
   getRobotsControllers,
   deleteRobotByIdController,
+  getRobotByIdController,
 } from './robots-controllers.js';
-
 
 const router = express.Router();
 
 router.route('/').get(getRobotsControllers).post(createRobotController);
 
-router.route('/:id').delete(deleteRobotByIdController);
+router
+  .route('/:id')
+  .get(getRobotByIdController)
+  .delete(deleteRobotByIdController);
 
 export default router;
