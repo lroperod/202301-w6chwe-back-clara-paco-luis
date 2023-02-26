@@ -10,7 +10,7 @@ app.use(cors(corsOptions));
 
 app.disable('x-powered-by');
 app.get('/', (req, res) => {
-  res.json('Server is up!!');
+  res.json('Server is working!!');
 });
 
 app.use(express.json());
