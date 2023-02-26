@@ -4,6 +4,7 @@ import {
   getRobotsControllers,
   deleteRobotByIdController,
   createRobotController,
+  getRobotByIdController,
 } from './robots-controllers';
 
 describe('Given a getRobotsControllers function from robots-controller', () => {
@@ -41,6 +42,46 @@ describe('Given a getRobotsControllers function from robots-controller', () => {
   });
 });
 
+describe('Given a getRobottByIdController function', () => {
+  const request = {
+    params: { id: 'mockId' },
+  } as Partial<Request>;
+  const response = {
+    status: jest.fn().mockReturnThis(),
+    json: jest.fn(),
+  } as Partial<Response>;
+
+  const robot = {
+    id: '0',
+    name: 'Mazinger Z',
+    img: 'urlRobot',
+    characteristics: {
+      velocity: 5,
+      resistence: 6,
+      creation: '1972',
+    },
+  };
+
+  test('When the robot exists, it should return the robot', async () => {
+    RobotModel.findById = jest.fn().mockResolvedValue(robot);
+    await getRobotByIdController(
+      request as Request,
+      response as Response,
+      jest.fn(),
+    );
+    expect(response.json).toHaveBeenCalledWith(robot);
+  });
+
+  test('When the robot do not exist, then it should return with an error', async () => {
+    RobotModel.findById = jest.fn().mockResolvedValue(null);
+    await getRobotByIdController(
+      request as Request,
+      response as Response,
+      jest.fn(),
+    );
+    expect(response.status).toHaveBeenCalledWith(500);
+  });
+});
 
 describe('Given a function to create robots', () => {
   const request = {} as Partial<Request>;
@@ -66,20 +107,20 @@ describe('Given a function to create robots', () => {
       response as Response,
       jest.fn(),
     );
-    
+
     expect(response.json).toHaveBeenCalled();
   });
-  
+
   test('When the creation is not successful, the server should respond with a 500 status', async () => {
     RobotModel.create = jest.fn().mockRejectedValue(500);
-    await createRobotController(request as Request,
+    await createRobotController(
+      request as Request,
       response as Response,
       jest.fn(),
     );
     expect(response.status).toHaveBeenCalledWith(500);
   });
 });
-
 
 describe('Given a deleteRobotByIdController function from robotsController', () => {
   const response = {
