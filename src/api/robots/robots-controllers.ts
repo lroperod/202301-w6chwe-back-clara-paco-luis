@@ -11,7 +11,6 @@ export const getRobotsControllers: RequestHandler = async (_req, res) => {
   }
 };
 
-
 export const createRobotController: RequestHandler = async (req, res) => {
   const id = crypto.randomUUID();
   const robot: typeof RobotModel = {
@@ -26,7 +25,6 @@ export const createRobotController: RequestHandler = async (req, res) => {
   }
 };
 
-
 export const deleteRobotByIdController: RequestHandler = async (req, res) => {
   const { id } = req.params;
   try {
@@ -35,6 +33,20 @@ export const deleteRobotByIdController: RequestHandler = async (req, res) => {
       res.sendStatus(404);
     } else {
       res.json(id);
+    }
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+export const getRobotByIdController: RequestHandler = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const robot = await RobotModel.findById(id);
+    if (robot === null) {
+      res.sendStatus(404);
+    } else {
+      res.json(robot);
     }
   } catch (error) {
     res.status(500).json(error);
