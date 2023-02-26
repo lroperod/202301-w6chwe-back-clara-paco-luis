@@ -3,10 +3,8 @@ import apiRouter from './api/api-router.js';
 import cors from 'cors';
 
 const app = express();
-const corsOptions = {
-  origin: 'https://w6chwe-back-clara-paco-luis.onrender.com',
-};
-app.use(cors(corsOptions));
+
+app.use(cors());
 
 app.disable('x-powered-by');
 app.get('/', (req, res) => {
